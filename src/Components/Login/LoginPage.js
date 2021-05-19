@@ -39,18 +39,6 @@ const LoginPage = () => {
                 });
             })
     }
-    // PHONE NUMBER VERIFICAIONS
-    const phoneNumberHandler = () => {
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-            'size': 'invisible',
-            'callback': (response) => {
-                // reCAPTCHA solved, allow signInWithPhoneNumber.
-                // onSignInSubmit();
-            }
-        });
-
-    }
-
     // facebook handler
     const facebookHandler = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
@@ -78,10 +66,10 @@ const LoginPage = () => {
                 <div className="row">
                     <div className="col-md-6 mt-110">
                         <h3>LOGIN</h3>
-                        <button onClick={phoneNumberHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
+                        <button className="w-75 m-1 btn btn-outline-warning colorBlack">
                             <div className="d-flex align-items-center">
                                 <img src={phoneIco} style={{ float: 'left' }} alt="fbIcon" width="6%" />
-                                <span className="ml-3">Continute With Your Mobile Number</span>
+                                <Link to="/loginWithPhone" className="ml-3">Continute With Your Mobile Number</Link>
                             </div>
                         </button>
                         <button onClick={facebookHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
