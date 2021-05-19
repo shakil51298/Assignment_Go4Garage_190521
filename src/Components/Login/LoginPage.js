@@ -5,6 +5,11 @@ import "firebase/auth";
 import { firebaseConfig } from '../../firebase.config';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoginLottie from '../LoginLottie/LoginLottie';
+import facebookIco from '../../assets/icon _fb.png'
+import phoneIco from '../../assets/icon _mobile.png'
+import googleIcon from '../../assets/icon _google.png'
+import envelopIco from '../../assets/icon _mail.png'
 
 
 if (!firebase.apps.length) {
@@ -19,7 +24,7 @@ const LoginPage = () => {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider).then((result) => {
             const user = result.user
-            console.log(user); 
+            console.log(user);
         })
             .catch((err) => {
                 const errMsg = err.message;
@@ -50,9 +55,9 @@ const LoginPage = () => {
     const facebookHandler = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider).then((result) => {
-                var user = result.user;
-                console.log(user);// user information
-            })
+            var user = result.user;
+            console.log(user);// user information
+        })
             .catch((error) => {
                 const errorMessage = error.message;
                 toast.error(errorMessage, {
@@ -68,43 +73,53 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="container centered">
-            <div className="row">
-                <div className="col">
-                    <h3>LOGIN</h3>
-                    <button onClick={phoneNumberHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
-                        <Link >
-                            Enter Your Mobile Number
-                        </Link>
-                    </button>
-                    <button onClick={facebookHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
-                        Continute With Your Facebook
-                    </button>
-                    <button onClick={googLogInHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
-                        Continue with Google
-                    </button>
-                    <button className="w-75 m-1 btn btn-outline-warning colorBlack">
-                        Continue With Email
-                    </button>
+        <div className="logInPage">
+            <div className="container centered">
+                <div className="row">
+                    <div className="col-md-6 mt-110">
+                        <h3>LOGIN</h3>
+                        <button onClick={phoneNumberHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
+                            <div className="d-flex align-items-center">
+                                <img src={phoneIco} style={{ float: 'left' }} alt="fbIcon" width="6%" />
+                                <span className="ml-3">Continute With Your Mobile Number</span>
+                            </div>
+                        </button>
+                        <button onClick={facebookHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
+                            <div className="d-flex align-items-center">
+                                <img src={facebookIco} style={{ float: 'left' }} alt="fbIcon" width="6%" />
+                                <span className="ml-3">Continute With Your Facebook</span>
+                            </div>
+                        </button>
+                        <button onClick={googLogInHandler} className="w-75 m-1 btn btn-outline-warning colorBlack">
+                            <div className="d-flex align-items-center">
+                                <img src={googleIcon} style={{ float: 'left' }} alt="fbIcon" width="6%" />
+                                <span className="ml-3">Continute With Google</span>
+                            </div>
+                        </button>
+                        <button className="w-75 m-1 btn btn-outline-warning colorBlack">
+                            <div className="d-flex align-items-center">
+                                <img src={envelopIco} style={{ float: 'left' }} alt="fbIcon" width="6%" />
+                                <span className="ml-3">Continute With Email</span>
+                            </div>
+                        </button>
+                        <h6 className="mt-5">By Continuing, You Agree To Out <Link>Terms of Service & Policy</Link></h6>
+                    </div>
+                    <div className="col-md-6">
+                        <LoginLottie />
+                    </div>
                 </div>
-                <div className="col">
-
-                </div>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </div>
-            <div className="mt-5 text-center">
-                <h6>By Continuing, You Agree To Out <Link>Terms of Service & Policy</Link></h6>
-            </div>
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </div>
     );
 };

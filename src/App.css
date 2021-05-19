@@ -20,13 +20,23 @@ body{
     --primary-gamil : rgb(204, 72, 72);
     --primary-gray : rgb(194, 191, 191);
 }
-
 .mainPages{
+    background:url(./assets/Bg\ 2.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 100vh;
     width: 100%;
+}
+.logInPage{
+    background:url(./assets/Bg\ 2.3.png);
+    background-repeat: no-repeat;
+    background-position:left;
+    background-size:contain;
+    height: 90vh;
+}
+.mt-110{
+    margin-top: 110px;
 }
 .bgColor{
 
